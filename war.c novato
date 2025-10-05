@@ -1,0 +1,67 @@
+// Bibliotecas necessárias para entrada/saída de dados e manipulação de strings.
+#include <stdio.h>
+#include <string.h>
+
+// --- Documentação: Criação da Struct ---
+// A struct 'Territorio' é um tipo de dado composto que agrupa todas as
+// informações essenciais de um território do jogo: seu nome, a cor do
+// exército que o ocupa e a quantidade de tropas presentes.
+struct Territorio {
+    char nome[30];
+    char cor[10];
+    int tropas;
+};
+
+int main() {
+    // --- Manutenibilidade: Declaração de Variáveis ---
+    // Cria um vetor de structs chamado 'mapaMundi' com capacidade para 5 territórios.
+    // O nome 'mapaMundi' é representativo do seu propósito no jogo.
+    struct Territorio mapaMundi[5];
+    int i; // Variável de controle para os laços (loops).
+
+    // --- Usabilidade: Interface de Entrada de Dados ---
+    // Cabeçalho para orientar o usuário sobre a etapa de cadastro.
+    printf("=============================================\n");
+    printf("   CADASTRO DE TERRITORIOS - JOGO WAR\n");
+    printf("=============================================\n\n");
+    printf("Por favor, insira os dados para 5 territorios.\n\n");
+
+    // Laço 'for' para preencher os dados dos 5 territórios.
+    for (i = 0; i < 5; i++) {
+        printf("--- Territorio %d ---\n", i + 1); // Indica qual território está sendo cadastrado.
+
+        // Solicita e lê o nome do território.
+        // Nota: scanf("%s", ...) lê apenas até o primeiro espaço.
+        // Para nomes compostos, seria necessário usar outra abordagem como fgets.
+        printf("Digite o nome do territorio: ");
+        scanf("%s", mapaMundi[i].nome);
+
+        // Solicita e lê a cor do exército.
+        printf("Digite a cor do exercito: ");
+        scanf("%s", mapaMundi[i].cor);
+
+        // Solicita e lê a quantidade de tropas.
+        printf("Digite a quantidade de tropas: ");
+        scanf("%d", &mapaMundi[i].tropas);
+
+        printf("\n"); // Adiciona uma linha em branco para melhor legibilidade.
+    }
+
+    // --- Desempenho e Exibição dos Dados ---
+    // O sistema exibe os dados imediatamente após o cadastro.
+    // Cabeçalho para a seção de exibição.
+    printf("\n=============================================\n");
+    printf("   MAPA MUNDI - TERRITORIOS CADASTRADOS\n");
+    printf("=============================================\n\n");
+
+    // Laço 'for' para percorrer o vetor e exibir os dados formatados.
+    for (i = 0; i < 5; i++) {
+        printf("Territorio %d:\n", i + 1);
+        printf("  -> Nome: %s\n", mapaMundi[i].nome);
+        printf("  -> Cor do Exercito: %s\n", mapaMundi[i].cor);
+        printf("  -> Quantidade de Tropas: %d\n", mapaMundi[i].tropas);
+        printf("----------------------------------------\n");
+    }
+
+    return 0; // Indica que o programa foi concluído com sucesso.
+}
